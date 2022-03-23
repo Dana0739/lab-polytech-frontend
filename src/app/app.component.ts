@@ -11,6 +11,6 @@ export class AppComponent {
   authorization: Authorization;
 
   constructor(private authorizationService: AuthorizationService) {
-    this.authorization = this.authorizationService.getAuthorization();
+    this.authorization = this.authorizationService.authorization;
   }
 }

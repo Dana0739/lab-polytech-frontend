@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
 import {CookieService} from './cookie.service';
 import {Authorization} from '../Authorization';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {User} from '../model/User';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
-  private authorization: Authorization;
+  authorization: Authorization;
   private COOKIE_AUTHORIZATION = 'COOKIE_AUTHORIZATION';
+  private url = environment.url + '/auth';
 
-  constructor(private cookieService: CookieService) {
+  constructor(private cookieService: CookieService,
+              private http: HttpClient) {
     this.authorization = this.getAuthorization();
   }
 
-  getAuthorization(): Authorization {
+
+  private getAuthorization(): Authorization {
     const result = new Authorization(false, '');
     const cookie = this.cookieService.getCookie(this.COOKIE_AUTHORIZATION);
     if (cookie !== '') {
@@ -26,11 +33,37 @@ export class AuthorizationService {
     return result;
   }
 
-  setAuthorization(isAuthorized: string, bearerToken: string, expireDays: number) {
+  private setAuthorization(isAuthorized: boolean, bearerToken: string, expireDays: number) {
     this.cookieService.setCookie(this.COOKIE_AUTHORIZATION, `${isAuthorized}; ${bearerToken}`, expireDays);
   }
 
-  deleteAuthorization() {
+  private deleteAuthorization() {
     this.cookieService.deleteCookie(this.COOKIE_AUTHORIZATION);
+  }
+
+  register(user: User): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Content-Type', 'application/json;charset=utf-8');
+    return this.http.post<any>(`${this.url}/register`, user, {headers});
+  }
+
+  logIn(user: User): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Content-Type', 'application/json;charset=utf-8');
+    return this.http.post<any>(`${this.url}/token`, user, {headers});
+  }
+
+  authorize(token: string) {
+    this.setAuthorization(true, token, 1);
+    this.authorization.isAuthorized = true;
+    this.authorization.bearerToken = token;
+  }
+
+  unAuthorize() {
+    this.deleteAuthorization();
+    this.authorization.isAuthorized = false;
+    this.authorization.bearerToken = '';
   }
 }

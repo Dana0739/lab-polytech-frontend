@@ -1,5 +1,5 @@
 <app-header *ngIf="authorization.isAuthorized">Content to render when condition is true.</app-header>
-<div style="text-align:center">
+<div *ngIf="!authorization.isAuthorized" style="text-align:center">
   <h1>
     Welcome to employees frontend!
   </h1>
