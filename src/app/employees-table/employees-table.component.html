@@ -43,6 +43,11 @@
           <td mat-cell *matCellDef="let element"> {{element.date_of_birth.slice(0, 10)}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef> Age</th>
+          <td mat-cell *matCellDef="let element"> {{ageView(element.date_of_birth.slice(0, 10))}} </td>
+        </ng-container>
+
         <ng-container matColumnDef="salary">
           <th mat-header-cell *matHeaderCellDef> Salary</th>
           <td mat-cell *matCellDef="let element"> {{salaryView(element.salary)}} </td>

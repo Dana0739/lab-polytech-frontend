@@ -23,6 +23,7 @@ export class EmployeesTableComponent implements OnInit {
     'surname',
     'position',
     'date_of_birth',
+    'age',
     'salary',
   ];
 
@@ -31,6 +32,12 @@ export class EmployeesTableComponent implements OnInit {
     this.employeesService.getEmployees().subscribe((employees) => {
       this.employees = employees;
     });
+    if (this.authorization.isAuthorized) {
+      setInterval(() => {
+        this.authorizationService.unAuthorize();
+        this.reload();
+      }, 3000);
+    }
   }
 
   setEmployees(res: Employee[]): void {
@@ -50,6 +57,14 @@ export class EmployeesTableComponent implements OnInit {
         ? '.' + this.replaceAll(res.split('.')[1], ',', '')
         : '');
     return res;
+  }
+
+  // tslint:disable-next-line:variable-name
+  ageView(date_of_birth: string): number {
+    const birthday: any = new Date(date_of_birth);
+    const ageDifMs = Date.now() - birthday;
+    const ageDate = new Date(ageDifMs); // milliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
   replaceAll(str: string, find: string, replace: string): string {
