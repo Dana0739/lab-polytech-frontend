@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Employee} from '../model/Employee';
 import {EmployeesService} from '../service/employees.service';
-import {Authorization} from '../Authorization';
+import {Authorization} from '../model/Authorization';
 import {AuthorizationService} from '../service/authorization.service';
 
 @Component({
@@ -35,6 +35,10 @@ export class EmployeesTableComponent implements OnInit {
 
   setEmployees(res: Employee[]): void {
     this.employees = res;
+  }
+
+  reload() {
+    window.location.reload();
   }
 
   salaryView(salary: number): string {

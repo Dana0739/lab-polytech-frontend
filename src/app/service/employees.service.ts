@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Employee} from '../model/Employee';
 import {FilterArguments} from '../model/FilterArguments';
+import {AuthorizationService} from './authorization.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,22 @@ export class EmployeesService {
 
   private url = environment.url + '/employees';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private authorizationService: AuthorizationService) { }
 
   getEmployees(): Observable<Employee[]> {
     const headers = new HttpHeaders()
       .set('Access-Control-Allow-Origin', '*')
       .set('Content-Type', 'application/json;charset=utf-8');
     return this.http.get<Employee[]>(this.url, {headers});
+  }
+
+  createEmployee(employee: Employee): Observable<Employee> {
+    const headers = new HttpHeaders()
+      .set('Authorization', 'Bearer ' + this.authorizationService.authorization.bearerToken)
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Content-Type', 'application/json;charset=utf-8');
+    return this.http.post<Employee>(this.url, employee, {headers});
   }
 
   filterEmployees(filterArgs: FilterArguments): Observable<Employee[]> {

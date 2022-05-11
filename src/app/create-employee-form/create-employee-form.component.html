@@ -1,41 +1,45 @@
-<div class="container">
+<div class="container border bg-light">
   <form #createEmployeeForm="ngForm">
     <div class="form-row form-group">
-      <div class="col-auto">
-        <label for="name" class="sr-only">Name</label>
+      <div class="col">
+        <label for="name">Name</label>
         <input type="text" class="form-control" id="name" placeholder="Name"
-               [(ngModel)]="newEmployee.name" name="name">
+               [(ngModel)]="newEmployee.name" name="name" required>
       </div>
 
-      <div class="col-auto">
-        <label for="surname" class="sr-only">Surname</label>
+      <div class="col">
+        <label for="surname">Surname</label>
         <input type="text" class="form-control" id="surname" placeholder="Surname"
-               [(ngModel)]="newEmployee.surname" name="surname">
+               [(ngModel)]="newEmployee.surname" name="surname" required>
       </div>
 
-      <div class="col-auto">
-        <input type="number" class="form-control" id="pageNumber"
-               [(ngModel)]="newEmployee.position" name="pageNumber">
-        <label for="pageNumber" class="">Position</label>
+      <div class="col">
+        <label for="position">Position</label>
+        <select class="form-control" name="position" id="position" [(ngModel)]="newEmployee.position" required>
+          <option value="Junior Software Engineer">Junior Software Engineer</option>
+          <option value="Software Engineer">Software Engineer</option>
+          <option value="Senior Software Engineer">Senior Software Engineer</option>
+          <option value="Lead Software Engineer">Lead Software Engineer</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row form-group">
+      <div class="col">
+        <label for="date_of_birth">Date of birth</label>
+        <input class="form-control" type="date" id="date_of_birth"
+               [(ngModel)]="newEmployee.date_of_birth" name="isSorted" required>
       </div>
 
-      <div class="col-auto">
-        <div class="form-group">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="isSorted"
-                   [(ngModel)]="newEmployee.date_of_birth" name="isSorted">
-            <label for="isSorted" class="form-check-label">Date of birth</label>
-          </div>
-
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="orderAsc"
-                   [(ngModel)]="newEmployee.salary" name="isSorted">
-            <label for="isSorted" class="form-check-label">Salary</label>
-          </div>
-        </div>
+      <div class="col">
+        <label for="salary">Salary</label>
+        <input class="form-control" type="number" id="salary" min="0"
+               [(ngModel)]="newEmployee.salary" name="salary" required>
       </div>
+    </div>
 
-      <div class="col-auto">
+    <div class="form-row form-group">
+      <div class="col">
         <button type="submit" class="btn btn-success" (click)="create()" [disabled]="!createEmployeeForm.form.valid">
           Create employee
         </button>
