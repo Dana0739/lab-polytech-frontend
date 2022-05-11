@@ -1,11 +1,13 @@
 export class Authorization {
   isAuthorized = false;
   bearerToken = '';
-  expireDate = 0;
+  expireMinutes = 0;
+  startTime;
 
-  constructor(isAuthorized: boolean, bearerToken: string, expireDate: number) {
+  constructor(isAuthorized: boolean, bearerToken: string, expireMinutes: number, startTime: any = new Date()) {
     this.isAuthorized = isAuthorized;
     this.bearerToken = bearerToken;
-    this.expireDate = expireDate;
+    this.expireMinutes = expireMinutes;
+    this.startTime = startTime;
   }
 }

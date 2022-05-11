@@ -43,6 +43,7 @@ export class AuthorizationComponent {
         this.ImgStatus = 200;
         this.isShownImg = true;
         this.authorizationService.authorize(res.token);
+        window.location.href = 'employees';
       }, error => {
         console.log(error);
         this.ImgStatus = error.status;

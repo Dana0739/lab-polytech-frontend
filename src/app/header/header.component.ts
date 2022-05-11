@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {AuthorizationService} from '../service/authorization.service';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent {
 
   constructor(private authorizationService: AuthorizationService) { }
+
+  @Input()
+  isAuthorized: boolean;
 
   logOut() {
     this.authorizationService.unAuthorize();

@@ -4,8 +4,7 @@ import {EmployeesService} from '../service/employees.service';
 
 @Component({
   selector: 'app-filter-sort-form',
-  templateUrl: './filter-sort-form.component.html',
-  styleUrls: ['./filter-sort-form.component.css']
+  templateUrl: './filter-sort-form.component.html'
 })
 export class FilterSortFormComponent implements OnInit {
 
@@ -13,14 +12,12 @@ export class FilterSortFormComponent implements OnInit {
   }
 
   filterArguments: FilterArguments;
-  errorMessage: string;
   isShownImg: boolean;
   imgStatus: number;
 
   @Output() onEmployeesSearched = new EventEmitter<any>();
 
   ngOnInit(): void {
-    this.errorMessage = '';
     this.filterArguments = new FilterArguments();
     this.imgStatus = 200;
     this.isShownImg = false;

@@ -1,8 +1,1 @@
-<app-header *ngIf="authorization.isAuthorized"></app-header>
-<div *ngIf="!authorization.isAuthorized" style="text-align:center">
-  <h1>
-    Welcome to employees frontend!
-  </h1>
-</div>
-<app-authorization *ngIf="!authorization.isAuthorized"></app-authorization>
-<app-employees-table *ngIf="authorization.isAuthorized"></app-employees-table>
+<router-outlet></router-outlet>

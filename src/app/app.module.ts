@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {AuthorizationComponent} from './authorization/authorization.component';
@@ -17,6 +18,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FilterSortFormComponent } from './filter-sort-form/filter-sort-form.component';
+import {AppModuleRouting} from './app.module.routing';
+import { CreateEmployeeFormComponent } from './create-employee-form/create-employee-form.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +27,12 @@ import { FilterSortFormComponent } from './filter-sort-form/filter-sort-form.com
     AuthorizationComponent,
     EmployeesTableComponent,
     HeaderComponent,
-    FilterSortFormComponent
+    FilterSortFormComponent,
+    CreateEmployeeFormComponent
   ],
   imports: [
+    RouterModule,
+    AppModuleRouting,
     BrowserModule,
     FormsModule,
     HttpClientModule,

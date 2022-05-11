@@ -1,43 +1,43 @@
 <div class="container">
-  <form #filterSortForm="ngForm">
+  <form #createEmployeeForm="ngForm">
     <div class="form-row form-group">
       <div class="col-auto">
         <label for="name" class="sr-only">Name</label>
         <input type="text" class="form-control" id="name" placeholder="Name"
-               [(ngModel)]="filterArguments.name" name="name">
+               [(ngModel)]="newEmployee.name" name="name">
       </div>
 
       <div class="col-auto">
         <label for="surname" class="sr-only">Surname</label>
         <input type="text" class="form-control" id="surname" placeholder="Surname"
-               [(ngModel)]="filterArguments.surname" name="surname">
+               [(ngModel)]="newEmployee.surname" name="surname">
       </div>
 
       <div class="col-auto">
         <input type="number" class="form-control" id="pageNumber"
-               [(ngModel)]="filterArguments.pageNumber" name="pageNumber">
-        <label for="pageNumber" class="">Page Number</label>
+               [(ngModel)]="newEmployee.position" name="pageNumber">
+        <label for="pageNumber" class="">Position</label>
       </div>
 
       <div class="col-auto">
         <div class="form-group">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="isSorted"
-                   [(ngModel)]="filterArguments.isSorted" name="isSorted">
-            <label for="isSorted" class="form-check-label">Sort by salary</label>
+                   [(ngModel)]="newEmployee.date_of_birth" name="isSorted">
+            <label for="isSorted" class="form-check-label">Date of birth</label>
           </div>
 
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="orderAsc"
-                   [(ngModel)]="filterArguments.orderAsc" name="isSorted">
-            <label for="isSorted" class="form-check-label">Order: ASC</label>
+                   [(ngModel)]="newEmployee.salary" name="isSorted">
+            <label for="isSorted" class="form-check-label">Salary</label>
           </div>
         </div>
       </div>
 
       <div class="col-auto">
-        <button type="submit" class="btn" (click)="find()" [disabled]="!filterSortForm.form.valid">Find
-          employees
+        <button type="submit" class="btn btn-success" (click)="create()" [disabled]="!createEmployeeForm.form.valid">
+          Create employee
         </button>
       </div>
     </div>

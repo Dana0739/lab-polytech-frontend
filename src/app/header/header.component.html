@@ -1,3 +1,4 @@
 <header class="modal-header">
-  <button type="button" class="btn btn-default" (click)="logOut()">Log Out</button>
+  <button *ngIf="isAuthorized" type="button" class="btn btn-default" (click)="logOut()">Log Out</button>
+  <a href="/auth" *ngIf="!isAuthorized">Log In</a>
 </header>
