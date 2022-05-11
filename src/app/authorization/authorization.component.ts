@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AuthorizationService} from '../service/authorization.service';
 import {User} from '../model/User';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-authorization',
@@ -9,7 +10,8 @@ import {User} from '../model/User';
 })
 export class AuthorizationComponent {
 
-  constructor(private authorizationService: AuthorizationService) {
+  constructor(private authorizationService: AuthorizationService,
+              private router: Router) {
     this.user = new User();
     this.ImgStatus = 400;
     this.isShownImg = false;
@@ -43,7 +45,7 @@ export class AuthorizationComponent {
         this.ImgStatus = 200;
         this.isShownImg = true;
         this.authorizationService.authorize(res.token);
-        window.location.href = 'employees';
+        this.router.navigate(['./employees']);
       }, error => {
         console.log(error);
         this.ImgStatus = error.status;

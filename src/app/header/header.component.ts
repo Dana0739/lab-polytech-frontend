@@ -12,6 +12,9 @@ export class HeaderComponent {
   @Input()
   isAuthorized: boolean;
 
+  @Input()
+  isEditPage: boolean;
+
   logOut() {
     this.authorizationService.unAuthorize();
   }

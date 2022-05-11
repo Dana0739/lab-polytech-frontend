@@ -3,6 +3,7 @@ import {Employee} from '../model/Employee';
 import {EmployeesService} from '../service/employees.service';
 import {Authorization} from '../model/Authorization';
 import {AuthorizationService} from '../service/authorization.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-employees-table',
@@ -12,7 +13,8 @@ export class EmployeesTableComponent implements OnInit {
   authorization: Authorization;
 
   constructor(private employeesService: EmployeesService,
-              private authorizationService: AuthorizationService) {
+              private authorizationService: AuthorizationService,
+              private router: Router) {
   }
 
   @Input()
@@ -75,7 +77,12 @@ export class EmployeesTableComponent implements OnInit {
   edit(employee: Employee) {
     console.log('Edit employee');
     console.log(employee);
-    //todo go to another page no modal
+    this.router.navigate(['./employees', employee.id,
+      { name: employee.name,
+        surname: employee.surname,
+        position: employee.position,
+        date_of_birth: employee.date_of_birth,
+        salary: employee.salary}]);
   }
 
   delete(employee: Employee) {

@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col border">
-      <app-header [isAuthorized]="authorization.isAuthorized"></app-header>
+      <app-header [isAuthorized]="authorization.isAuthorized" [isEditPage]="false"></app-header>
     </div>
   </div>
   <div class="row py-3" *ngIf="authorization.isAuthorized">

@@ -20,6 +20,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { FilterSortFormComponent } from './filter-sort-form/filter-sort-form.component';
 import {AppModuleRouting} from './app.module.routing';
 import { CreateEmployeeFormComponent } from './create-employee-form/create-employee-form.component';
+import { EditEmployeeFormComponent } from './edit-employee-form/edit-employee-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CreateEmployeeFormComponent } from './create-employee-form/create-emplo
     EmployeesTableComponent,
     HeaderComponent,
     FilterSortFormComponent,
-    CreateEmployeeFormComponent
+    CreateEmployeeFormComponent,
+    EditEmployeeFormComponent
   ],
   imports: [
     RouterModule,
