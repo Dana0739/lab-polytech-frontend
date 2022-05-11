@@ -1,6 +1,6 @@
 # Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.10.
+This project with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
 
 ## Development server
 
@@ -30,3 +30,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 https://stackoverflow.com/questions/34298133/angular-cookies
+
+#cookie -> local storage
+
+https://stackoverflow.com/questions/16073603/how-to-update-each-dependency-in-package-json-to-the-latest-version
+
+
+es5BrowserSupport - deleted in angular.json
+
+https://stackoverflow.com/questions/54373518/ng-serve-command-show-an-error-first-and-in-last-compiled-successfully
+https://stackoverflow.com/questions/43931986/how-to-upgrade-angular-cli-to-the-latest-version
