@@ -26,7 +26,7 @@ export class CreateEmployeeFormComponent implements OnInit {
   }
 
   create() {
-    this.employeesService.createEmployee(this.newEmployee).subscribe(
+    this.employeesService.updateEmployee(this.newEmployee).subscribe(
       res => {
         console.log(res);
         this.imgStatus = 200;

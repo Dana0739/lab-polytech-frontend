@@ -23,12 +23,24 @@ export class EmployeesService {
     return this.http.get<Employee[]>(this.url, {headers});
   }
 
-  createEmployee(employee: Employee): Observable<Employee> {
+  updateEmployee(employee: Employee): Observable<Employee> {
     const headers = new HttpHeaders()
       .set('Authorization', 'Bearer ' + this.authorizationService.authorization.bearerToken)
       .set('Access-Control-Allow-Origin', '*')
       .set('Content-Type', 'application/json;charset=utf-8');
-    return this.http.post<Employee>(this.url, employee, {headers});
+    let url = this.url;
+    if (employee.id || employee.id === 0) {
+      url += `${this.url}/${employee.id}`;
+    }
+    return this.http.post<Employee>(url, employee, {headers});
+  }
+
+  deleteEmployee(id: number): Observable<string> {
+    const headers = new HttpHeaders()
+      .set('Authorization', 'Bearer ' + this.authorizationService.authorization.bearerToken)
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Content-Type', 'application/json;charset=utf-8');
+    return this.http.delete<string>(`${this.url}/${id}`, {headers});
   }
 
   filterEmployees(filterArgs: FilterArguments): Observable<Employee[]> {

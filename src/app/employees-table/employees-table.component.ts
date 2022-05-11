@@ -25,6 +25,7 @@ export class EmployeesTableComponent implements OnInit {
     'date_of_birth',
     'age',
     'salary',
+    'actions',
   ];
 
   ngOnInit() {
@@ -36,7 +37,7 @@ export class EmployeesTableComponent implements OnInit {
       setInterval(() => {
         this.authorizationService.unAuthorize();
         this.reload();
-      }, 3000);
+      }, 300000);
     }
   }
 
@@ -69,5 +70,26 @@ export class EmployeesTableComponent implements OnInit {
 
   replaceAll(str: string, find: string, replace: string): string {
     return str.replace(new RegExp(find, 'g'), replace);
+  }
+
+  edit(employee: Employee) {
+    console.log('Edit employee');
+    console.log(employee);
+    //todo go to another page no modal
+  }
+
+  delete(employee: Employee) {
+    console.log('Delete employee');
+    console.log(employee);
+    if (confirm(`Are you sure you want to delete employee: ${employee.name} ${employee.surname} (id: ${employee.id})?`)) {
+      this.employeesService.deleteEmployee(employee.id).subscribe(
+        res => {
+          console.log(res);
+          this.reload();
+        },
+        error => {
+          console.log(error);
+        });
+    }
   }
 }
