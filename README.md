@@ -44,10 +44,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
     + `employees service` - CRUD to backend `/employees`
 
 ###Useful links about managing dependencies
-https://stackoverflow.com/questions/16073603/how-to-update-each-dependency-in-package-json-to-the-latest-version
 
-es5BrowserSupport - deleted in angular.json
-
-https://stackoverflow.com/questions/54373518/ng-serve-command-show-an-error-first-and-in-last-compiled-successfully
-
-https://stackoverflow.com/questions/43931986/how-to-upgrade-angular-cli-to-the-latest-version
++ https://stackoverflow.com/questions/16073603/how-to-update-each-dependency-in-package-json-to-the-latest-version
++ es5BrowserSupport - deleted in angular.json
++ https://stackoverflow.com/questions/54373518/ng-serve-command-show-an-error-first-and-in-last-compiled-successfully
++ https://stackoverflow.com/questions/43931986/how-to-upgrade-angular-cli-to-the-latest-version
