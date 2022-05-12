@@ -19,7 +19,7 @@ Pull requests are not welcome. This is an educational project that will never be
 
 ## Installation
 ```bash
-git clone https://github.com/Dana0739/backend-employees.git
+git clone https://github.com/Dana0739/lab-polytech-frontend.git
 ```
 
 ## Development server
